@@ -1,0 +1,39 @@
+/* General styling for the pane */
+Pane {
+    -fx-background-color: linear-gradient(to bottom, #bbf3f6, #ffffff); /* Suave degradado ambiental */
+}
+
+/* Estilo para los Labels principales */
+Label {
+    -fx-font-family: "Arial";
+    -fx-text-fill: #2e7d32; /* Verde oscuro ambiental */
+    -fx-font-size: 14px;
+}
+
+/* Estilo para los Labels grandes (títulos) */
+Label[alignment="CENTER"] {
+    -fx-text-fill: #00796b; /* Azul verdoso oscuro */
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+}
+
+/* Estilo para los Buttons */
+Button {
+    -fx-background-color: #81c784; /* Verde medio */
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px 10px;
+}
+
+/* Hover effect para Buttons */
+Button:hover {
+    -fx-background-color: #66bb6a; /* Verde más brillante */
+}
+
+/* Separador */
+Separator {
+    -fx-background-color: #4db6ac; /* Azul verdoso claro */
+}
+

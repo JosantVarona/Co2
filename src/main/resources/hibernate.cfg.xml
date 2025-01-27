@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- Configuración de conexión a la base de datos -->
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/carbono?useSSL=false&amp;serverTimezone=UTC</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password"></property>
+    <!-- Dialecto de Hibernate para MySQL -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <!-- Configuración de Hibernate -->
+    <!-- <property name="hibernate.show_sql">true</property> Muestra las consultas SQL en la consola -->
+    <property name="hibernate.format_sql">true</property> <!-- Formatea las consultas SQL -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <!-- Aqui mapeamos las clases -->
+    <mapping class="dam.JosantVarona.model.Usuario"></mapping>
+    <mapping class="dam.JosantVarona.model.Actividad"></mapping>
+    <mapping class="dam.JosantVarona.model.Categoria"></mapping>
+    <mapping class="dam.JosantVarona.model.Habito"></mapping>
+    <mapping class="dam.JosantVarona.model.HabitoId"></mapping>
+    <mapping class="dam.JosantVarona.model.Huella"></mapping>
+    <mapping class="dam.JosantVarona.model.Recomendacion"></mapping>
+  </session-factory>
+</hibernate-configuration>

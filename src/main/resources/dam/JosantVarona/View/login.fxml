@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@style/principal.css" fx:controller="dam.JosantVarona.View.ControllerLogin">
+
+   <children>
+      <Separator layoutX="297.0" layoutY="100.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Label alignment="CENTER" layoutX="375.0" layoutY="63.0" prefHeight="46.0" prefWidth="105.0" text="Register">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="102.0" layoutY="63.0" prefHeight="46.0" prefWidth="105.0" text="Login">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="80.0" layoutY="146.0" promptText="Nombre" />
+      <TextField layoutX="80.0" layoutY="200.0" promptText="Contraseña" />
+      <TextField layoutX="353.0" layoutY="146.0" promptText="Nombre" />
+      <TextField layoutX="353.0" layoutY="200.0" promptText="email" />
+      <TextField layoutX="353.0" layoutY="249.0" promptText="Contraseña" />
+      <Label layoutX="88.0" layoutY="129.0" text="Nombre" />
+      <Label layoutX="88.0" layoutY="183.0" text="Contraseña" />
+      <Label layoutX="361.0" layoutY="129.0" text="Nombre" />
+      <Label layoutX="361.0" layoutY="183.0" text="Email" />
+      <Label layoutX="361.0" layoutY="232.0" text="Contraseña" />
+      <Button layoutX="129.0" layoutY="324.0" mnemonicParsing="false" onAction="#GoMainLogin" text="Iniciar" />
+      <Button layoutX="401.0" layoutY="324.0" mnemonicParsing="false" onAction="#GoMainRegister" text="Registrar" />
+   </children>
+</Pane>
