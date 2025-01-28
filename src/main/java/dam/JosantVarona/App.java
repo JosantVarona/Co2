@@ -19,13 +19,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         View view = AppController.loadFXML(Scenes.ROOT);
-        scene = new Scene(view.scene, 1000, 500);
+        scene = new Scene(view.scene, 1500, 750);
         currenController = (AppController) view.controller;
         currenController.onOpen(null);
         stage.setScene(scene);
         stage.show();
     }
-
 
     public static void main(String[] args) {
         launch();

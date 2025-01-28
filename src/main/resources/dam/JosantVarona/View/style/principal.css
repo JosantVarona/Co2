@@ -36,4 +36,8 @@ Button:hover {
 Separator {
     -fx-background-color: #4db6ac; /* Azul verdoso claro */
 }
+.salir {
+    -fx-opacity: 0.8;
+    -fx-effect: brightness(0.0);
+}
 

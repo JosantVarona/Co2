@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,5 +50,16 @@ public class AppController extends Controller implements Initializable {
         view.scene =p;
         view.controller=c;
         return view;
+    }
+    public void openModalv(Scenes scenes, String tilte, Controller parent, Object data) throws Exception {
+        View view = loadFXML(scenes);
+        Stage stage = new Stage();
+        stage.setTitle(tilte);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(App.stage);
+        Scene _scene = new Scene(view.scene);
+        stage.setScene(_scene);
+        view.controller.onOpen(data);
+        stage.showAndWait();
     }
 }
