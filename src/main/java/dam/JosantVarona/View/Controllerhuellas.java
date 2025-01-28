@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerIni extends Controller implements Initializable {
+public class Controllerhuellas extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws Exception {
 
@@ -23,11 +23,12 @@ public class ControllerIni extends Controller implements Initializable {
 
     }
     @FXML
-    private void goTologin() throws Exception {
-        App.currenController.changeScene(Scenes.LOGIN, null);
+    private void goToMain() throws Exception {
+        App.currenController.changeScene(Scenes.MAIN, null);
     }
     @FXML
-    private void goTohuellas() throws Exception {
-        App.currenController.changeScene(Scenes.HUELLASH, null);
+    private void goToAddHuella() throws Exception {
+        App.currenController.openModalv(Scenes.INSERHUELLA,"Añadiendo huella",this,null);
     }
+
 }

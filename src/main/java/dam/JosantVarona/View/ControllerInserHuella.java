@@ -1,13 +1,14 @@
 package dam.JosantVarona.View;
 
-import dam.JosantVarona.App;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerIni extends Controller implements Initializable {
+public class ControllerInserHuella extends Controller implements Initializable {
     @Override
     public void onOpen(Object input) throws Exception {
 
@@ -23,11 +24,7 @@ public class ControllerIni extends Controller implements Initializable {
 
     }
     @FXML
-    private void goTologin() throws Exception {
-        App.currenController.changeScene(Scenes.LOGIN, null);
-    }
-    @FXML
-    private void goTohuellas() throws Exception {
-        App.currenController.changeScene(Scenes.HUELLASH, null);
+    private void closeWindow(Event event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }
