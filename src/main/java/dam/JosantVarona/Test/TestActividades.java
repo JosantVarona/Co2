@@ -13,5 +13,7 @@ public class TestActividades {
         for (Actividad actividad : actividads) {
             System.out.println(actividad);
         }
+        /*Actividad actividad = dao.findName("Conducir coche");
+        System.out.println(actividad);*/
     }
 }
