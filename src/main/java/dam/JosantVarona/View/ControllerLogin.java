@@ -1,6 +1,7 @@
 package dam.JosantVarona.View;
 
 import dam.JosantVarona.App;
+import dam.JosantVarona.Connection.UserSesion;
 import dam.JosantVarona.model.Usuario;
 import dam.JosantVarona.service.ServiceUser;
 import javafx.fxml.FXML;
@@ -57,6 +58,7 @@ public class ControllerLogin extends Controller implements Initializable {
         if (usuario != null) {
             if (serviceUser.userLogin(usuario)){
                 System.out.println("Usuario login");
+                UserSesion.getInstancia().logIn(serviceUser.usuarioSesion(usuario.getEmail()));
                 App.currenController.changeScene(Scenes.MAIN,null);
             }
         }

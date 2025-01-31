@@ -30,6 +30,17 @@ public class Huella {
     @Column(name = "fecha")
     private LocalDate fecha;
 
+    public Huella(Usuario idUsuario, Actividad idActividad, BigDecimal valor, String unidad, LocalDate fecha) {
+        this.idUsuario = idUsuario;
+        this.idActividad = idActividad;
+        this.valor = valor;
+        this.unidad = unidad;
+        this.fecha = fecha;
+    }
+    public Huella() {
+
+    }
+
     public Integer getId() {
         return id;
     }
@@ -78,4 +89,15 @@ public class Huella {
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "Huella{" +
+                "id=" + id +
+                ", idUsuario=" + idUsuario +
+                ", idActividad=" + idActividad +
+                ", valor=" + valor +
+                ", unidad='" + unidad + '\'' +
+                ", fecha=" + fecha +
+                '}';
+    }
 }

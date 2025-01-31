@@ -11,7 +11,6 @@ public class ServiceUser {
         if (usuario != null) {
             dao.insertUsuario(usuario);
             result = true;
-            System.out.println("Usuario registrado");
         }
         return result;
     }
@@ -29,10 +28,19 @@ public class ServiceUser {
         boolean result = false;
         if (usuario.getEmail() != null && !usuario.getEmail().isEmpty()) {
             Usuario us = dao.buscarUsuario(usuario.getEmail());
-            if (us.getEmail().equals(usuario.getEmail()) && us.getContraseña().equals(usuario.getContraseña())) {
-                result = true;
+            if (us != null) {
+                if (us.getEmail().equals(usuario.getEmail()) && us.getContraseña().equals(usuario.getContraseña())) {
+                    result = true;
+                }
             }
         }
         return result;
+    }
+    public Usuario usuarioSesion(String email) {
+        Usuario us = new Usuario();
+        if (email != null && !email.isEmpty()) {
+            us = dao.buscarUsuario(email);
+        }
+        return us;
     }
 }
