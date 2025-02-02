@@ -13,11 +13,11 @@ public class Huella {
     @Column(name = "id_registro", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private dam.JosantVarona.model.Usuario idUsuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_actividad")
     private Actividad idActividad;
 
@@ -94,7 +94,7 @@ public class Huella {
         return "Huella{" +
                 "id=" + id +
                 ", idUsuario=" + idUsuario +
-                ", idActividad=" + idActividad +
+                //", idActividad=" + idActividad +
                 ", valor=" + valor +
                 ", unidad='" + unidad + '\'' +
                 ", fecha=" + fecha +

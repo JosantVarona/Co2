@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@style/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.JosantVarona.View.Controllerhuellas">
@@ -9,5 +11,13 @@
       <Button layoutX="1141.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="50.0" prefWidth="91.0" text="&lt;----" />
       <Label alignment="CENTER" layoutX="185.0" layoutY="61.0" prefHeight="41.0" prefWidth="119.0" text="MIS HUELLAS" />
       <Button layoutX="1116.0" layoutY="711.0" mnemonicParsing="false" onAction="#goToAddHuella" prefHeight="50.0" prefWidth="119.0" text="Dejar huella" />
+      <TableView fx:id="huellas" layoutX="238.0" layoutY="154.0" prefHeight="215.0" prefWidth="577.0">
+        <columns>
+          <TableColumn fx:id="columnValor" prefWidth="136.00003051757812" text="Valor" />
+          <TableColumn fx:id="columnUnidad" prefWidth="67.199951171875" text="Unidad" />
+            <TableColumn fx:id="columnFecha" prefWidth="233.59994506835938" text="Fecha" />
+            <TableColumn fx:id="columnDelete" prefWidth="138.5999755859375" text="Eliminar" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

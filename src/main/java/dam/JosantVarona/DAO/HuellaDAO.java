@@ -2,9 +2,14 @@ package dam.JosantVarona.DAO;
 
 import dam.JosantVarona.Connection.Connect;
 import dam.JosantVarona.model.Huella;
+import dam.JosantVarona.model.Usuario;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class HuellaDAO {
+    private static final String FINDBYUSER="FROM Huella WHERE idUsuario =:idUsuario";
 
     public void insertHuella(Huella huella) {
         Huella huella1 = new Huella();
@@ -18,5 +23,39 @@ public class HuellaDAO {
         sesion.save(huella1);
         sesion.getTransaction().commit();
         sesion.close();
+    }
+    public List<Huella> listHuellasUser(Usuario usuario) {
+        List<Huella> huellas;
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        Query consulta = sesion.createQuery(FINDBYUSER);
+        consulta.setParameter("idUsuario", usuario);
+        huellas = consulta.list();
+        sesion.getTransaction().commit();
+        sesion.close();
+        return huellas;
+    }
+    public void deleteHuella(Huella huella) {
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        sesion.delete(huella);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
+    public Huella findHuellaById(int id) {
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        Huella huella = (Huella) sesion.get(Huella.class, id);
+        sesion.getTransaction().commit();
+        sesion.close();
+        return huella;
+    }
+    public Huella updateHuella(Huella huella) {
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        sesion.update(huella);
+        sesion.getTransaction().commit();
+        sesion.close();
+        return huella;
     }
 }

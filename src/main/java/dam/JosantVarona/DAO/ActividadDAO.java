@@ -17,8 +17,8 @@ public class ActividadDAO {
         List<Actividad> actividades = new ArrayList<>();
         Session sesion = Connect.getInstance().getSession();
         sesion.beginTransaction();
-        Query query = sesion.createQuery("from Actividad", Actividad.class);
-        actividades = query.list();
+        Query consulta = sesion.createQuery("from Actividad", Actividad.class);
+        actividades = consulta.list();
         sesion.getTransaction().commit();
         sesion.close();
         return actividades;
