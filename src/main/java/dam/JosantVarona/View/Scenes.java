@@ -6,7 +6,8 @@ public enum Scenes {
     LOGIN("View/login.fxml"),
     MAIN("View/main.fxml"),
     HUELLASH("View/huellas.fxml"),
-    INSERHUELLA("View/dejarHuella.fxml"),;
+    INSERHUELLA("View/dejarHuella.fxml"),
+    PERFIL("View/perfil.fxml"),;
 
     private String url;
     Scenes (String url){

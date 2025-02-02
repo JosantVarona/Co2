@@ -11,7 +11,7 @@
       <Button layoutX="1141.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="50.0" prefWidth="91.0" text="&lt;----" />
       <Label alignment="CENTER" layoutX="185.0" layoutY="61.0" prefHeight="41.0" prefWidth="119.0" text="MIS HUELLAS" />
       <Button layoutX="1116.0" layoutY="711.0" mnemonicParsing="false" onAction="#goToAddHuella" prefHeight="50.0" prefWidth="119.0" text="Dejar huella" />
-      <TableView fx:id="huellas" layoutX="238.0" layoutY="154.0" prefHeight="215.0" prefWidth="577.0">
+      <TableView fx:id="huellas" layoutX="238.0" layoutY="154.0" prefHeight="381.0" prefWidth="560.0">
         <columns>
           <TableColumn fx:id="columnValor" prefWidth="136.00003051757812" text="Valor" />
           <TableColumn fx:id="columnUnidad" prefWidth="67.199951171875" text="Unidad" />

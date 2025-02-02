@@ -45,6 +45,7 @@ public class ControllerLogin extends Controller implements Initializable {
             boolean guardado = serviceUser.registerUser(recogerDatosUsuarioRegister());
             if (guardado){
                 System.out.println("Usuario registrado");
+                UserSesion.getInstancia().logIn(serviceUser.usuarioSesion(recogerDatosUsuarioRegister().getEmail()));
                 App.currenController.changeScene(Scenes.MAIN,null);
             }
         }else {
