@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@style/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.JosantVarona.View.ControllarPerfil">
+   <children>
+      <Button layoutX="535.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="50.0" prefWidth="91.0" text="&lt;----" />
+      <Label layoutX="91.0" layoutY="64.0" text="Nombre usuario" />
+      <Label layoutX="91.0" layoutY="146.0" text="Email" />
+      <Label layoutX="91.0" layoutY="224.0" text="Contraseña" />
+      <Button layoutX="100.0" layoutY="398.0" mnemonicParsing="false" onAction="#updateUser" onMouseClicked="#closeWindow" text="Cambiar" />
+      <Button layoutX="457.0" layoutY="240.0" mnemonicParsing="false" onAction="#deleteUser" onMouseClicked="#closeWindow" styleClass="Eliminar" text="Eliminar cuenta" />
+      <TextField fx:id="txtNombre" layoutX="89.0" layoutY="90.0" />
+      <TextField fx:id="txtCuenta" layoutX="89.0" layoutY="181.0" />
+      <TextField fx:id="pass" layoutX="89.0" layoutY="268.0" />
+   </children>
+</Pane>

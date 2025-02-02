@@ -43,4 +43,20 @@ public class ServiceUser {
         }
         return us;
     }
+    public boolean updateUsuario(Usuario usuario) {
+        boolean result = false;
+        if (usuario != null) {
+            dao.updateUsuario(usuario);
+            result = true;
+        }
+        return result;
+    }
+    public boolean deleteUsuario(Usuario usuario) {
+        boolean result = false;
+        if (usuario != null) {
+            dao.deleteUsuario(usuario);
+            result = true;
+        }
+        return result;
+    }
 }

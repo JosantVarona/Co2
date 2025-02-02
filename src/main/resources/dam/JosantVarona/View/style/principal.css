@@ -40,4 +40,7 @@ Separator {
     -fx-opacity: 0.8;
     -fx-effect: brightness(0.0);
 }
-
+.Eliminar{
+    -fx-background-color: #ff0000; /* Verde medio */
+    -fx-text-fill: #ffffff;
+}

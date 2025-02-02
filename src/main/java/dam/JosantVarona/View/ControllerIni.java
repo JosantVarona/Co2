@@ -1,13 +1,19 @@
 package dam.JosantVarona.View;
 
 import dam.JosantVarona.App;
+import dam.JosantVarona.Connection.UserSesion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
+import java.lang.ref.PhantomReference;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerIni extends Controller implements Initializable {
+    @FXML
+    private Label tfName;
     @Override
     public void onOpen(Object input) throws Exception {
 
@@ -20,7 +26,7 @@ public class ControllerIni extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        tfName.setText(UserSesion.getInstancia().getUsuarioIniciado().getNombre());
     }
     @FXML
     private void goTologin() throws Exception {
@@ -29,5 +35,9 @@ public class ControllerIni extends Controller implements Initializable {
     @FXML
     private void goTohuellas() throws Exception {
         App.currenController.changeScene(Scenes.HUELLASH, null);
+    }
+    @FXML
+    private void goToPerfil() throws Exception {
+        App.currenController.openModalv(Scenes.PERFIL, "Perfil", this,null);
     }
 }
