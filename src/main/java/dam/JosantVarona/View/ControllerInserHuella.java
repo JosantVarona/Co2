@@ -1,5 +1,6 @@
 package dam.JosantVarona.View;
 
+import dam.JosantVarona.App;
 import dam.JosantVarona.Connection.UserSesion;
 import dam.JosantVarona.model.Actividad;
 import dam.JosantVarona.model.Huella;
@@ -83,10 +84,11 @@ public class ControllerInserHuella extends Controller implements Initializable {
         }
     }
     @FXML
-    private void GuardarHuella() {
+    private void GuardarHuella() throws Exception {
         Huella huella = new Huella();
         String nombreActividad = cbActividad.getValue();
         ServiceHuella huellaService = new ServiceHuella();
+        String valorHuella = valor.getText();
 
         if (date != null) {
             LocalDate selectedDate = date.getValue();
@@ -95,7 +97,11 @@ public class ControllerInserHuella extends Controller implements Initializable {
             System.out.println("Selected Date: " + selectedDate);
             System.out.println("Current Date: " + currentDate);
 
-            if (selectedDate != null && currentDate.isAfter(selectedDate)) {
+            if (selectedDate != null &&
+                    currentDate.isAfter(selectedDate)
+                    && valorHuella.matches("\\d+(\\.\\d+)?")
+                    && !valorHuella.isEmpty()) {
+
                 if (nombreActividad != null) {
                     for (Actividad actividad : actividades) {
                         if (actividad.getNombre().equals(nombreActividad)) {
@@ -106,6 +112,7 @@ public class ControllerInserHuella extends Controller implements Initializable {
                             huella.setFecha(selectedDate);
                             huellaService.huellaInsertada(huella);
                             System.out.println(huella);
+                            App.currenController.changeScene(Scenes.HUELLASH, null);
                         }
                     }
                 }
