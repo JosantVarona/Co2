@@ -16,5 +16,6 @@
       <Button layoutX="175.0" layoutY="259.0" mnemonicParsing="false" onAction="#goTohuellas" text="Mis huellas" />
       <Label fx:id="tfName" layoutX="139.0" layoutY="80.0" prefHeight="54.0" prefWidth="192.0" text="Nombre usuario" />
       <Button layoutX="175.0" layoutY="182.0" mnemonicParsing="false" onAction="#goToPerfil" text="Perfil" />
+      <Button layoutX="177.0" layoutY="336.0" mnemonicParsing="false" onAction="#goToHabitos" text="Mis habitos" />
    </children>
 </Pane>

@@ -51,12 +51,12 @@ public class ServiceUser {
         }
         return result;
     }
-    public boolean deleteUsuario(Usuario usuario) {
+    /*public boolean deleteUsuario(Usuario usuario) {
         boolean result = false;
         if (usuario != null) {
             dao.deleteUsuario(usuario);
             result = true;
         }
         return result;
-    }
+    }*/
 }

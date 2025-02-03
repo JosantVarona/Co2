@@ -12,7 +12,6 @@
       <Label layoutX="91.0" layoutY="146.0" text="Email" />
       <Label layoutX="91.0" layoutY="224.0" text="Contraseña" />
       <Button layoutX="100.0" layoutY="398.0" mnemonicParsing="false" onAction="#updateUser" onMouseClicked="#closeWindow" text="Cambiar" />
-      <Button layoutX="457.0" layoutY="240.0" mnemonicParsing="false" onAction="#deleteUser" onMouseClicked="#closeWindow" styleClass="Eliminar" text="Eliminar cuenta" />
       <TextField fx:id="txtNombre" layoutX="89.0" layoutY="90.0" />
       <TextField fx:id="txtCuenta" layoutX="89.0" layoutY="181.0" />
       <TextField fx:id="pass" layoutX="89.0" layoutY="268.0" />

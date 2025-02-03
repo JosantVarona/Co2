@@ -13,6 +13,6 @@ public class TestUsuario {
         System.out.println(u);
         //u.setEmail("a");
         //dao.updateUsuario(u);
-        dao.deleteUsuario(u);
+        //dao.deleteUsuario(u);
     }
 }
