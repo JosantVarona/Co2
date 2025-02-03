@@ -42,12 +42,12 @@ public class UsuarioDAO {
         session.getTransaction().commit();
         session.close();
     }
-    public void deleteUsuario(Usuario usuario) {
+    /*public void deleteUsuario(Usuario usuario) {
         Session session = Connect.getInstance().getSession();
         session.beginTransaction();
         Usuario usuarioMerged = (Usuario) session.merge(usuario);
         session.delete(usuarioMerged);
         session.getTransaction().commit();
         session.close();
-    }
+    }*/
 }

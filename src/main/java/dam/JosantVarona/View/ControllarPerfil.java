@@ -48,10 +48,10 @@ public class ControllarPerfil extends Controller implements Initializable{
         serviceUser.updateUsuario(UserSesion.getInstancia().getUsuarioIniciado());
         App.currenController.changeScene(Scenes.MAIN,null);
     }
-    @FXML
+    /*@FXML
     private void deleteUser() throws Exception {
         ServiceUser serviceUser = new ServiceUser();
         serviceUser.deleteUsuario(UserSesion.getInstancia().getUsuarioIniciado());
         App.currenController.changeScene(Scenes.LOGIN,null);
-    }
+    }*/
 }
