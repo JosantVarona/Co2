@@ -1,15 +1,22 @@
 package dam.JosantVarona.DAO;
 
 import dam.JosantVarona.Connection.Connect;
+import dam.JosantVarona.model.Actividad;
 import dam.JosantVarona.model.Huella;
 import dam.JosantVarona.model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class HuellaDAO {
     private static final String FINDBYUSER="FROM Huella WHERE idUsuario =:idUsuario";
+    private static final String IMPACTOAMBIENTE="SELECT (h.valor * c.factorEmision) " +
+            "FROM Huella h " +
+            "JOIN h.idActividad a " +
+            "JOIN a.idCategoria c " +
+            "WHERE h.idUsuario = :idUsuario AND h.idActividad = :idActividad";
 
     public void insertHuella(Huella huella) {
         Huella huella1 = new Huella();
@@ -57,5 +64,17 @@ public class HuellaDAO {
         sesion.getTransaction().commit();
         sesion.close();
         return huella;
+    }
+    public BigDecimal impactoHuella(Actividad actividad, Usuario usuario) {
+        BigDecimal valor;
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        Query consulta = sesion.createQuery(IMPACTOAMBIENTE);
+        consulta.setParameter("idUsuario", usuario);
+        consulta.setParameter("idActividad", actividad);
+        valor = (BigDecimal) consulta.uniqueResult();
+        sesion.getTransaction().commit();
+        sesion.close();
+        return valor;
     }
 }

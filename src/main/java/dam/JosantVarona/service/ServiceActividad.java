@@ -11,4 +11,11 @@ public class ServiceActividad {
         List<Actividad> actividads = actividadDAO.listActividades();
         return actividads;
     }
+    public Actividad buscarId(Integer id){
+        Actividad actividad = null;
+        if (id != null) {
+            actividad = actividadDAO.findId(id);
+        }
+        return actividad;
+    }
 }

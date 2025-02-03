@@ -76,7 +76,7 @@ public class ControllerInsertHabitos extends Controller implements Initializable
 
             if (selectedDate != null && currentDate.isAfter(selectedDate)) {
 
-                if (nombreActividad != null && !nombreActividad.isEmpty() && !tipo.contains("Tipo")) {
+                if (nombreActividad != null && !nombreActividad.isEmpty() && !tipo.contains("Tipo")&& frecuencia.getText().matches("\\d+")) {
                     for (Actividad actividad : actividades) {
                         if (actividad.getNombre().equals(nombreActividad)) {
                             habito.setIdUsuario(UserSesion.getInstancia().getUsuarioIniciado());

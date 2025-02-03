@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@style/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.JosantVarona.View.ControllerIni">
    <children>
-      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="1131.0" layoutY="28.0" onMouseClicked="#goTologin">
+      <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="1159.0" layoutY="28.0" onMouseClicked="#goTologin">
          <image>
             <Image url="@../../../IMAGENview/salir.png" />
          </image>
@@ -17,5 +18,6 @@
       <Label fx:id="tfName" layoutX="139.0" layoutY="80.0" prefHeight="54.0" prefWidth="192.0" text="Nombre usuario" />
       <Button layoutX="175.0" layoutY="182.0" mnemonicParsing="false" onAction="#goToPerfil" text="Perfil" />
       <Button layoutX="177.0" layoutY="336.0" mnemonicParsing="false" onAction="#goToHabitos" text="Mis habitos" />
+      <ListView layoutX="447.0" layoutY="146.0" prefHeight="280.0" prefWidth="660.0" />
    </children>
 </Pane>

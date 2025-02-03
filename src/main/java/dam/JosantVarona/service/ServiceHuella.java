@@ -1,9 +1,11 @@
 package dam.JosantVarona.service;
 
 import dam.JosantVarona.DAO.HuellaDAO;
+import dam.JosantVarona.model.Actividad;
 import dam.JosantVarona.model.Huella;
 import dam.JosantVarona.model.Usuario;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ServiceHuella {
@@ -39,5 +41,14 @@ public class ServiceHuella {
             huellaDAO.updateHuella(huella);
         }
         return result;
+    }
+    public BigDecimal impactoHuella(Actividad actividad, Usuario user) {
+        BigDecimal valor = null;
+        if (actividad != null && user != null) {
+            if (huellaDAO.impactoHuella(actividad,user) != null) {
+                valor = huellaDAO.impactoHuella(actividad,user);
+            }
+        }
+        return valor;
     }
 }
