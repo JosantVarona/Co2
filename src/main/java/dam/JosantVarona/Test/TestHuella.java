@@ -1,7 +1,9 @@
 package dam.JosantVarona.Test;
 
+import dam.JosantVarona.DAO.ActividadDAO;
 import dam.JosantVarona.DAO.HuellaDAO;
 import dam.JosantVarona.DAO.UsuarioDAO;
+import dam.JosantVarona.model.Actividad;
 import dam.JosantVarona.model.Huella;
 import dam.JosantVarona.model.Usuario;
 
@@ -9,12 +11,8 @@ import java.math.BigDecimal;
 
 public class TestHuella {
     public static void main(String[] args) {
-        Usuario u = new Usuario();
-        UsuarioDAO daoU = new UsuarioDAO();
-        u = daoU.buscarUsuario("a");
-        /*Actividad a = new Actividad();
-        ActividadDAO daoA = new ActividadDAO();
-        a =daoA.findName("Conducir coche");
+
+        /*
         //a.setId(2);
 
         BigDecimal valor = new BigDecimal(3.14);
@@ -24,12 +22,24 @@ public class TestHuella {
         List<Huella> huellaUser = dao.listHuellasUser(u);
         for (Huella h : huellaUser) {
             System.out.println(h);
-        }*/
-        HuellaDAO dao = new HuellaDAO();
-        Huella huella = dao.findHuellaById(9);
+            Huella huella = dao.findHuellaById(9);
         System.out.println(huella);
         huella.setValor(new BigDecimal(123.45));
         dao.updateHuella(huella);
-
+        }*/
+        HuellaDAO dao = new HuellaDAO();
+        Usuario u = new Usuario();
+        UsuarioDAO daoU = new UsuarioDAO();
+        u = daoU.buscarUsuario("a");
+        Actividad a = new Actividad();
+        ActividadDAO daoA = new ActividadDAO();
+        a =daoA.findName("Consumo de agua potable");
+        BigDecimal valor;
+        if (dao.impactoHuella(a,u)== null){
+            System.out.println("No huella consumada");
+        }else {
+            valor = dao.impactoHuella(a,u);
+            System.out.println(valor);
+        }
     }
 }

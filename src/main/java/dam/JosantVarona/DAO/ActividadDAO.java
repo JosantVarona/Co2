@@ -33,4 +33,12 @@ public class ActividadDAO {
         session.getTransaction().commit();
         return result;
     }
+    public Actividad findId(int id) {
+        Actividad result = null;
+        Session session = Connect.getInstance().getSession();
+        session.beginTransaction();
+        result = session.get(Actividad.class, id);
+        session.getTransaction().commit();
+        return result;
+    }
 }

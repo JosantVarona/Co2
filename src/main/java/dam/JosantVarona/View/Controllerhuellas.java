@@ -32,6 +32,8 @@ public class Controllerhuellas extends Controller implements Initializable {
     private TableColumn<Huella, String> columnFecha;
     @FXML
     private TableColumn<Huella, Void> columnDelete;
+    @FXML
+    private TableColumn<Huella, String> columnActividad;
 
     private ObservableList<Huella> userHuellas;
 
@@ -46,6 +48,7 @@ public class Controllerhuellas extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        columnActividad.setCellValueFactory(cellData-> new SimpleStringProperty(cellData.getValue().getIdActividad().getNombre()));
         columnValor.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getValor().toString()) // Convertimos BigDecimal a String
         );
