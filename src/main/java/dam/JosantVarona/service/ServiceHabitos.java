@@ -44,4 +44,12 @@ public class ServiceHabitos {
         }
         return result;
     }
+    public boolean updateHabitos(Habito habito) {
+        boolean result = false;
+        if (habito != null) {
+            habitosDAO.updateHabitos(habito);
+            result = true;
+        }
+        return result;
+    }
 }

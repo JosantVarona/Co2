@@ -107,4 +107,11 @@ public class ControllerHabitos extends Controller implements Initializable{
             });
         }
     }
+    @FXML
+    private void updateHabitos() throws Exception {
+        Habito habito = habitos.getSelectionModel().getSelectedItem();
+        if (habito != null) {
+            App.currenController.openModalv(Scenes.INSERTHABITOS,"Actulizar dato",this,habito);
+        }
+    }
 }
