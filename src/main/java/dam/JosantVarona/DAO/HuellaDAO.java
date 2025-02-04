@@ -8,15 +8,25 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HuellaDAO {
     private static final String FINDBYUSER="FROM Huella WHERE idUsuario =:idUsuario";
-    private static final String IMPACTOAMBIENTE="SELECT (h.valor * c.factorEmision) " +
+    private static final String IMPACTOAMBIENTE="SELECT SUM(h.valor * c.factorEmision) " +
             "FROM Huella h " +
             "JOIN h.idActividad a " +
             "JOIN a.idCategoria c " +
             "WHERE h.idUsuario = :idUsuario AND h.idActividad = :idActividad";
+    private static final String IMPACTOMES = "SELECT WEEK(h.fecha), SUM(h.valor * c.factorEmision) " +
+            "FROM Huella h " +
+            "JOIN h.idActividad a " +
+            "JOIN a.idCategoria c " +
+            "WHERE h.idUsuario = :idUsuario " +
+            "AND YEAR(h.fecha) = :anio " +
+            "AND MONTH(h.fecha) = :mes " +
+            "GROUP BY WEEK(h.fecha) " +
+            "ORDER BY WEEK(h.fecha)";
 
     public void insertHuella(Huella huella) {
         Huella huella1 = new Huella();
@@ -77,4 +87,23 @@ public class HuellaDAO {
         sesion.close();
         return valor;
     }
+    public List<Object[]> impactoMensual(Usuario usuario, Integer anio, Integer mes) {
+        List<Object[]> resultados = new ArrayList<>();
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+
+        Query consulta = sesion.createQuery(IMPACTOMES);
+        consulta.setParameter("idUsuario", usuario);
+        consulta.setParameter("anio", anio);
+        consulta.setParameter("mes", mes);
+
+        resultados = consulta.list();
+
+        sesion.getTransaction().commit();
+        sesion.close();
+
+        return resultados;
+    }
+
+
 }

@@ -11,7 +11,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@style/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.JosantVarona.View.ControllerInsertHabitos">
    <children>
       <Button layoutX="535.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="50.0" prefWidth="91.0" text="&lt;----" />
-      <Label layoutX="38.0" layoutY="36.0" prefHeight="50.0" prefWidth="111.0" text="DEJAR HUELLA ">
+      <Label layoutX="38.0" layoutY="36.0" prefHeight="50.0" prefWidth="111.0" text="Guardar habitos">
          <font>
             <Font size="25.0" />
          </font>
@@ -19,11 +19,12 @@
       <ComboBox fx:id="tipoHabito" layoutX="194.0" layoutY="137.0" prefHeight="25.0" prefWidth="150.0" />
       <Label alignment="CENTER" layoutX="142.0" layoutY="109.0" prefHeight="16.0" prefWidth="150.0" text="Tipo" />
       <Label layoutX="38.0" layoutY="109.0" text="Frecuencia" />
-      <Button layoutX="270.0" layoutY="360.0" mnemonicParsing="false" onAction="#insertHabito" onMouseClicked="#closeWindow" text="Insertar Habito" />
+      <Button fx:id="inserbutton" layoutX="269.0" layoutY="330.0" mnemonicParsing="false" onAction="#insertHabito" onMouseClicked="#closeWindow" text="Insertar Habito" />
       <TextField fx:id="frecuencia" layoutX="38.0" layoutY="137.0" prefHeight="25.0" prefWidth="91.0" promptText="Frecuencia " />
       <Label layoutX="38.0" layoutY="248.0" text="Fecha" />
       <DatePicker fx:id="fecha" layoutX="38.0" layoutY="280.0" prefHeight="25.0" prefWidth="150.0" />
-      <Label alignment="CENTER" layoutX="344.0" layoutY="109.0" prefHeight="16.0" prefWidth="150.0" text="Actividad" />
+      <Label fx:id="activi" alignment="CENTER" layoutX="344.0" layoutY="109.0" prefHeight="16.0" prefWidth="150.0" text="Actividad" />
       <ComboBox fx:id="cbActividad" layoutX="377.0" layoutY="137.0" prefHeight="25.0" prefWidth="193.0" />
+      <Button fx:id="updatebutton" layoutX="286.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarHabito" onMouseClicked="#closeWindow" text="Actualizar" />
    </children>
 </Pane>

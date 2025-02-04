@@ -13,9 +13,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -32,12 +30,33 @@ public class ControllerInsertHabitos extends Controller implements Initializable
     private DatePicker fecha;
     @FXML
     private TextField frecuencia;
+    @FXML
+    private Button inserbutton;
+    @FXML
+    private Button updatebutton;
+    @FXML
+    private Label activi;
 
     private ServiceActividad serviceActivi = new ServiceActividad();
 
     private List<Actividad> actividades = serviceActivi.allActividades();
+
+    private Habito habitoupdate = null;
     @Override
     public void onOpen(Object input) throws Exception {
+        habitoupdate = (Habito) input;
+        System.out.println(habitoupdate);
+
+        if (habitoupdate != null) {
+            inserbutton.setVisible(false);
+            cbActividad.setVisible(false);
+            activi.setVisible(false);
+            tipoHabito.setValue(habitoupdate.getTipo());
+            frecuencia.setText(habitoupdate.getFrecuencia().toString());
+            fecha.setValue(habitoupdate.getUltimaFecha());
+        }else {
+            updatebutton.setVisible(false);
+        }
 
         List<String> boxAcctividades = new ArrayList<>();
         for (Actividad actividad : actividades) {
@@ -55,7 +74,11 @@ public class ControllerInsertHabitos extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tipoHabito.setItems(FXCollections.observableArrayList("Diário","Semanal","Mensual","Anual"));
-        tipoHabito.setValue("Tipo");
+        if (habitoupdate == null) {
+            tipoHabito.setValue("Tipo");
+        }
+
+
     }
     @FXML
     private void closeWindow(Event event) {
@@ -97,6 +120,38 @@ public class ControllerInsertHabitos extends Controller implements Initializable
 
                         }
                     }
+                }
+            } else {
+                System.out.println("Datos invalidos");
+            }
+        } else {
+            System.out.println("Fecha no seleccionada");
+        }
+    }
+    @FXML
+    private void actualizarHabito() throws Exception {
+        String tipo = tipoHabito.getValue();
+        ServiceHabitos serviceHabitos = new ServiceHabitos();
+        if (fecha != null) {
+            LocalDate selectedDate = fecha.getValue();
+            LocalDate currentDate = LocalDate.now();
+
+            System.out.println("Selected Date: " + selectedDate);
+            System.out.println("Current Date: " + currentDate);
+
+            if (selectedDate != null && currentDate.isAfter(selectedDate)) {
+
+                if ( frecuencia.getText().matches("\\d+")) {
+
+                            habitoupdate.setFrecuencia(Integer.valueOf(frecuencia.getText()));
+                            habitoupdate.setTipo(tipo);
+                            habitoupdate.setUltimaFecha(selectedDate);
+                            HabitoId habitoId = new HabitoId();
+                            habitoId.setIdActividad(habitoupdate.getIdActividad().getId());
+                            habitoId.setIdUsuario(habitoupdate.getIdUsuario().getId());
+                            habitoupdate.setId(habitoId);
+                            serviceHabitos.updateHabitos(habitoupdate);
+                            App.currenController.changeScene(Scenes.HABITOS, null);
                 }
             } else {
                 System.out.println("Datos invalidos");

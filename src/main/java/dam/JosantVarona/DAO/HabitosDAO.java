@@ -36,4 +36,11 @@ public class HabitosDAO {
         session.getTransaction().commit();
         session.close();
     }
+    public void updateHabitos(Habito habito) {
+        Session session = Connect.getInstance().getSession();
+        session.beginTransaction();
+        session.update(habito);
+        session.getTransaction().commit();
+        session.close();
+    }
 }
