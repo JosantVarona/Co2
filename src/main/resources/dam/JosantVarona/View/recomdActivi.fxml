@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@style/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.JosantVarona.View.ControllerRecomdActivi">
+   <children>
+      <TableView fx:id="tablaRecomendacion" layoutX="37.0" layoutY="66.0" prefHeight="293.0" prefWidth="575.0">
+        <columns>
+          <TableColumn fx:id="colImpacto" prefWidth="183.20001220703125" text="Impacto Ambiental" />
+          <TableColumn fx:id="colDecripcion" minWidth="0.0" prefWidth="391.199951171875" text="Descripción" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>

@@ -15,14 +15,14 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 public class ControllerIni extends Controller implements Initializable {
     @FXML
@@ -37,6 +37,10 @@ public class ControllerIni extends Controller implements Initializable {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
+    @FXML
+    ComboBox <Integer> comboMes;
+    @FXML
+    ComboBox <Integer> comboAnio;
 
 
     private ObservableList<Recomendacion> recomendaciones;
@@ -47,7 +51,7 @@ public class ControllerIni extends Controller implements Initializable {
         List<Recomendacion> showRecomed = serviceRecomend.recomedUser(usuario);
         this.recomendaciones = FXCollections.observableArrayList(showRecomed);
         recomendacionTable.setItems(recomendaciones);
-        cargarImpactoMensual();
+
     }
 
     @Override
@@ -59,6 +63,9 @@ public class ControllerIni extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tfName.setText(UserSesion.getInstancia().getUsuarioIniciado().getNombre());
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        comboMes.getItems().addAll(IntStream.rangeClosed(1,12).boxed().toArray(Integer[]::new));
+        int anioActual = LocalDate.now().getYear();
+        comboAnio.getItems().addAll(IntStream.rangeClosed(2000,anioActual).boxed().toArray(Integer[]::new));
     }
     @FXML
     private void goTologin() throws Exception {
@@ -77,12 +84,12 @@ public class ControllerIni extends Controller implements Initializable {
     private void goToHabitos() throws Exception {
         App.currenController.changeScene(Scenes.HABITOS,null);
     }
-    private void cargarImpactoMensual() {
+    private void cargarImpactoMensual(Integer anio, Integer mes) {
         stackedBarChart.getData().clear();
         Usuario usuario = UserSesion.getInstancia().getUsuarioIniciado();
         ServiceHuella serviceHuella = new ServiceHuella();
 
-        List<Object[]> impactoMensual = serviceHuella.impactoMensual(usuario, 2025, 1);
+        List<Object[]> impactoMensual = serviceHuella.impactoMensual(usuario, anio, mes);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Impacto Semanal");
@@ -94,5 +101,16 @@ public class ControllerIni extends Controller implements Initializable {
         }
 
         stackedBarChart.getData().add(series);
+    }
+    @FXML
+    private void showImpactoMensual() {
+        Integer mes = comboMes.getValue();
+        Integer anio = comboAnio.getValue();
+        System.out.println(anio);
+        if (mes != null && anio != null) {
+            cargarImpactoMensual(anio, mes);
+        }else {
+            System.out.println("selecciona los campos");
+        }
     }
 }

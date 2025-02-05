@@ -45,8 +45,6 @@ public class ControllerInserHuella extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws Exception {
-
-
         List<String> boxAcctividades = new ArrayList<>();
         for (Actividad actividad : actividades) {
             boxAcctividades.add(actividad.getNombre());
@@ -89,19 +87,15 @@ public class ControllerInserHuella extends Controller implements Initializable {
         String nombreActividad = cbActividad.getValue();
         ServiceHuella huellaService = new ServiceHuella();
         String valorHuella = valor.getText();
-
         if (date != null) {
             LocalDate selectedDate = date.getValue();
             LocalDate currentDate = LocalDate.now();
-
             System.out.println("Selected Date: " + selectedDate);
             System.out.println("Current Date: " + currentDate);
-
             if (selectedDate != null &&
                     currentDate.isAfter(selectedDate)
                     && valorHuella.matches("\\d+(\\.\\d+)?")
                     && !valorHuella.isEmpty()) {
-
                 if (nombreActividad != null) {
                     for (Actividad actividad : actividades) {
                         if (actividad.getNombre().equals(nombreActividad)) {

@@ -6,6 +6,8 @@ import dam.JosantVarona.model.Usuario;
 import dam.JosantVarona.service.ServiceUser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -49,7 +51,7 @@ public class ControllerLogin extends Controller implements Initializable {
                 App.currenController.changeScene(Scenes.MAIN,null);
             }
         }else {
-            System.out.println("los campos no existe o el usuario ya esta");
+            System.out.println("Usuario no encontrado");
         }
     }
     @FXML
@@ -61,9 +63,11 @@ public class ControllerLogin extends Controller implements Initializable {
                 System.out.println("Usuario login");
                 UserSesion.getInstancia().logIn(serviceUser.usuarioSesion(usuario.getEmail()));
                 App.currenController.changeScene(Scenes.MAIN,null);
+            }else {
+                System.out.println("Usuario no encontrado");
             }
         }
-        System.out.println("Necestas introducir datos");
+
 
     }
     private Usuario recogerDatosUsuarioRegister() {

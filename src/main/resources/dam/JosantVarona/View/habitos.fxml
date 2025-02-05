@@ -13,10 +13,10 @@
       <Button layoutX="1119.0" layoutY="644.0" mnemonicParsing="false" onAction="#goToInsertHabitos" prefHeight="50.0" prefWidth="119.0" text="Insertar habito" />
       <TableView fx:id="habitos" editable="true" layoutX="238.0" layoutY="154.0" prefHeight="381.0" prefWidth="848.0">
         <columns>
-          <TableColumn fx:id="frecuencia" onEditStart="#updateHabitos" prefWidth="136.00003051757812" text="Frecuencia" />
-          <TableColumn fx:id="tipo" onEditStart="#updateHabitos" prefWidth="67.199951171875" text="Tipo" />
-            <TableColumn fx:id="fecha" onEditStart="#updateHabitos" prefWidth="233.59994506835938" text="Fecha" />
-            <TableColumn fx:id="actividad" prefWidth="266.39996337890625" text="Actividad" />
+          <TableColumn fx:id="frecuencia" onEditStart="#updateHabitos" prefWidth="136.00003051757812" text="Frecuencia 🔄" />
+          <TableColumn fx:id="tipo" onEditStart="#updateHabitos" prefWidth="67.199951171875" text="Tipo🔄" />
+            <TableColumn fx:id="fecha" onEditStart="#updateHabitos" prefWidth="233.59994506835938" text="Fecha🔄" />
+            <TableColumn fx:id="actividad" onEditStart="#recomdActivi" prefWidth="266.39996337890625" text="Actividad🚩" />
             <TableColumn fx:id="delete" prefWidth="142.4000244140625" text="Eliminar" />
         </columns>
       </TableView>

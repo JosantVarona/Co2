@@ -114,4 +114,11 @@ public class ControllerHabitos extends Controller implements Initializable{
             App.currenController.openModalv(Scenes.INSERTHABITOS,"Actulizar dato",this,habito);
         }
     }
+    @FXML
+    private void recomdActivi() throws Exception {
+        Habito habito = habitos.getSelectionModel().getSelectedItem();
+        if (habito != null) {
+            App.currenController.openModalv(Scenes.RECOMENDACTIVI,"Recomendaciones para actividad",this,habito);
+        }
+    }
 }
