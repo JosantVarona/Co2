@@ -51,7 +51,6 @@ public class ControllerIni extends Controller implements Initializable {
         List<Recomendacion> showRecomed = serviceRecomend.recomedUser(usuario);
         this.recomendaciones = FXCollections.observableArrayList(showRecomed);
         recomendacionTable.setItems(recomendaciones);
-
     }
 
     @Override

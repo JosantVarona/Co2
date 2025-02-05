@@ -4,14 +4,17 @@ import dam.JosantVarona.App;
 import dam.JosantVarona.Connection.UserSesion;
 import dam.JosantVarona.model.Usuario;
 import dam.JosantVarona.service.ServiceUser;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.math.BigDecimal;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerLogin extends Controller implements Initializable {
@@ -25,20 +28,36 @@ public class ControllerLogin extends Controller implements Initializable {
     private TextField cuenta;
     @FXML
     private PasswordField pass;
+    @FXML
+    private TableView<Object[]> table;
+    @FXML
+    private TableColumn<Object[], String> user;
+    @FXML
+    private TableColumn<Object[], BigDecimal> impacto;
+    @FXML
+    private TableColumn<Object[], Integer> posicion;
+
+    private ObservableList<Object[]> ranking;
 
     @Override
     public void onOpen(Object input) throws Exception {
-
+        ServiceUser serviceUser = new ServiceUser();
+        List<Object[]> users = serviceUser.ranking();
+        this.ranking = FXCollections.observableArrayList(users);
+        table.setItems(ranking);
     }
 
     @Override
     public void onClose(Object output) {
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        posicion.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(table.getItems().indexOf(cellData.getValue()) + 1).asObject()
+        );
+        impacto.setCellValueFactory(cellData -> new SimpleObjectProperty<>((BigDecimal) cellData.getValue()[0]));
+        user.setCellValueFactory(cellData -> new SimpleObjectProperty<>((String) cellData.getValue()[1]));
     }
     @FXML
     public void GoMainRegister() throws Exception {

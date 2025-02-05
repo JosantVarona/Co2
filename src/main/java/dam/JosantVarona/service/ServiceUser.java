@@ -3,6 +3,9 @@ package dam.JosantVarona.service;
 import dam.JosantVarona.DAO.UsuarioDAO;
 import dam.JosantVarona.model.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ServiceUser {
    private UsuarioDAO dao = new UsuarioDAO();
 
@@ -59,4 +62,9 @@ public class ServiceUser {
         }
         return result;
     }*/
+    public List<Object[]> ranking(){
+        List<Object[]> lista = new ArrayList<>();
+        lista = dao.impactoranking();
+        return lista;
+    }
 }
