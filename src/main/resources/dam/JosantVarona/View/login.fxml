@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -41,5 +43,13 @@
             <Image url="@../../../IMAGENview/CO2.png" />
          </image>
       </ImageView>
+      <TableView fx:id="table" layoutX="887.0" layoutY="538.0" prefHeight="200.0" prefWidth="313.0">
+        <columns>
+          <TableColumn fx:id="user" prefWidth="118.9332275390625" text="Usuario" />
+            <TableColumn fx:id="impacto" prefWidth="126.4000244140625" text="Impacto" />
+            <TableColumn fx:id="posicion" prefWidth="64.800048828125" text="Rankin" />
+        </columns>
+      </TableView>
+      <Label layoutX="1050.0" layoutY="497.0" text="Ranking" />
    </children>
 </Pane>

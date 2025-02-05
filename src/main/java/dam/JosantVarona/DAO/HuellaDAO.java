@@ -91,17 +91,13 @@ public class HuellaDAO {
         List<Object[]> resultados = new ArrayList<>();
         Session sesion = Connect.getInstance().getSession();
         sesion.beginTransaction();
-
         Query consulta = sesion.createQuery(IMPACTOMES);
         consulta.setParameter("idUsuario", usuario);
         consulta.setParameter("anio", anio);
         consulta.setParameter("mes", mes);
-
         resultados = consulta.list();
-
         sesion.getTransaction().commit();
         sesion.close();
-
         return resultados;
     }
 

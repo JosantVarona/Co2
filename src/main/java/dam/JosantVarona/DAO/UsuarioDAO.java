@@ -3,14 +3,23 @@ package dam.JosantVarona.DAO;
 import dam.JosantVarona.Connection.Connect;
 import dam.JosantVarona.model.Usuario;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UsuarioDAO {
 
     private static final String BUSCARGMAIL ="FROM Usuario u WHERE u.email = :email";
+    private static final String RANKING = "SELECT SUM(h.valor * c.factorEmision), u.nombre " +
+            "FROM Huella h " +
+            "JOIN h.idActividad a " +
+            "JOIN a.idCategoria c " +
+            "JOIN h.idUsuario u " +
+            "GROUP BY u.nombre " +
+            "ORDER BY SUM(h.valor * c.factorEmision)";
 
     public void insertUsuario(Usuario usuario) {
 
@@ -50,4 +59,14 @@ public class UsuarioDAO {
         session.getTransaction().commit();
         session.close();
     }*/
+    public List<Object[]> impactoranking(){
+        Session session = Connect.getInstance().getSession();
+        session.beginTransaction();
+        List<Object[]> resultados = new ArrayList<>();
+        Query consulta = session.createQuery(RANKING);
+        resultados = consulta.list();
+        session.getTransaction().commit();
+        session.close();
+        return resultados;
+    }
 }
