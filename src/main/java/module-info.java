@@ -7,6 +7,7 @@ module dam.JosantVarona {
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
     requires jdk.compiler;
+    requires itextpdf;
 
     opens dam.JosantVarona.model to org.hibernate.orm.core;
 

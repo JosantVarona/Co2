@@ -33,7 +33,7 @@ public class TestHuella {
             System.out.println(valor);
         }*/
         HuellaDAO daoH = new HuellaDAO();
-        List<Object[]> valor=daoH.impactoMensual(u,2025,1);
+        List<Object[]> valor=daoH.impactoDiario(u,2025,1);
         for (Object[] fila : valor) {
             System.out.println(Arrays.toString(fila));
         }
