@@ -58,4 +58,11 @@ public class ServiceHuella {
         }
         return result;
     }
+    public List<Object[]> impactoDiario(Usuario usuario, Integer anio, Integer mes){
+        List<Object[]> result = null;
+        if (usuario != null && anio != null && mes != null) {
+            result = huellaDAO.impactoDiario(usuario,anio,mes);
+        }
+        return result;
+    }
 }

@@ -27,6 +27,15 @@ public class HuellaDAO {
             "AND MONTH(h.fecha) = :mes " +
             "GROUP BY WEEK(h.fecha) " +
             "ORDER BY WEEK(h.fecha)";
+    private static final String IMPACTOPORDIA = "SELECT SUM(h.valor * c.factorEmision), DAY(h.fecha) " +
+            "FROM Huella h " +
+            "JOIN h.idActividad a " +
+            "JOIN a.idCategoria c " +
+            "WHERE h.idUsuario = :idUsuario " +
+            "AND YEAR(h.fecha) = :anio " +
+            "AND MONTH(h.fecha) = :mes " +
+            "GROUP BY DAY(h.fecha) " +
+            "ORDER BY DAY(h.fecha)";
 
     public void insertHuella(Huella huella) {
         Huella huella1 = new Huella();
@@ -100,6 +109,18 @@ public class HuellaDAO {
         sesion.close();
         return resultados;
     }
-
+    public List<Object[]> impactoDiario(Usuario usuario, Integer anio, Integer mes) {
+        List<Object[]> resultados = new ArrayList<>();
+        Session sesion = Connect.getInstance().getSession();
+        sesion.beginTransaction();
+        Query consulta = sesion.createQuery(IMPACTOPORDIA);
+        consulta.setParameter("idUsuario", usuario);
+        consulta.setParameter("anio", anio);
+        consulta.setParameter("mes", mes);
+        resultados = consulta.list();
+        sesion.getTransaction().commit();
+        sesion.close();
+        return resultados;
+    }
 
 }

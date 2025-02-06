@@ -38,8 +38,9 @@
       </StackedBarChart>
       <ComboBox fx:id="comboAnio" layoutX="300.0" layoutY="436.0" prefWidth="150.0" />
       <ComboBox fx:id="comboMes" layoutX="300.0" layoutY="513.0" prefWidth="150.0" />
-      <Button layoutX="347.0" layoutY="594.0" mnemonicParsing="false" onAction="#showImpactoMensual" prefHeight="54.0" prefWidth="56.0" text="🔍" />
+      <Button layoutX="246.0" layoutY="589.0" mnemonicParsing="false" onAction="#showImpactoMensual" prefHeight="54.0" prefWidth="56.0" text="🔍" />
       <Label layoutX="300.0" layoutY="400.0" text="Año" />
       <Label layoutX="300.0" layoutY="482.0" text="Mes" />
+      <Button layoutX="346.0" layoutY="589.0" mnemonicParsing="false" onAction="#guardarPDF" prefHeight="54.0" prefWidth="138.0" text="PDF POR DIA 📝" />
    </children>
 </Pane>
