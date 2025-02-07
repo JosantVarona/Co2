@@ -17,6 +17,8 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -90,48 +92,52 @@ public class ControllerInsertHabitos extends Controller implements Initializable
         String tipo = tipoHabito.getValue();
         ServiceHabitos serviceHabitos = new ServiceHabitos();
         String nombreActividad = cbActividad.getValue();
-        if (fecha != null) {
-            LocalDate selectedDate = fecha.getValue();
-            LocalDate currentDate = LocalDate.now();
+        LocalDate selectedDate = null;
 
-            System.out.println("Selected Date: " + selectedDate);
-            System.out.println("Current Date: " + currentDate);
+            selectedDate = fecha.getValue();
 
-            if (selectedDate != null && currentDate.isAfter(selectedDate)) {
+            if (selectedDate != null) {
 
-                if (nombreActividad != null && !nombreActividad.isEmpty() && !tipo.contains("Tipo")&& frecuencia.getText().matches("\\d+")) {
-                    for (Actividad actividad : actividades) {
-                        if (actividad.getNombre().equals(nombreActividad)) {
-                            habito.setIdUsuario(UserSesion.getInstancia().getUsuarioIniciado());
-                            habito.setIdActividad(actividad);
-                            habito.setFrecuencia(Integer.valueOf(frecuencia.getText()));
-                            habito.setTipo(tipo);
-                            habito.setUltimaFecha(selectedDate);
-                            HabitoId habitoId = new HabitoId();
-                            habitoId.setIdActividad(actividad.getId());
-                            habitoId.setIdUsuario(UserSesion.getInstancia().getUsuarioIniciado().getId());
-                            habito.setId(habitoId);
-                            if (!serviceHabitos.exitHabitos(habito,UserSesion.getInstancia().getUsuarioIniciado())) {
-                                serviceHabitos.insertHabitos(habito);
-                                App.currenController.changeScene(Scenes.HABITOS, null);
-                            }else {
-                                System.out.println("Error al insertar habito");
+                LocalDate currentDate = LocalDate.now();
+                if (currentDate.isAfter(selectedDate)) {
+
+                    if (nombreActividad != null && !nombreActividad.isEmpty() && !tipo.contains("Tipo")&& frecuencia.getText().matches("\\d+")) {
+                        for (Actividad actividad : actividades) {
+                            if (actividad.getNombre().equals(nombreActividad)) {
+                                habito.setIdUsuario(UserSesion.getInstancia().getUsuarioIniciado());
+                                habito.setIdActividad(actividad);
+                                habito.setFrecuencia(Integer.valueOf(frecuencia.getText()));
+                                habito.setTipo(tipo);
+                                habito.setUltimaFecha(selectedDate);
+                                HabitoId habitoId = new HabitoId();
+                                habitoId.setIdActividad(actividad.getId());
+                                habitoId.setIdUsuario(UserSesion.getInstancia().getUsuarioIniciado().getId());
+                                habito.setId(habitoId);
+                                if (!serviceHabitos.exitHabitos(habito,UserSesion.getInstancia().getUsuarioIniciado())) {
+                                    serviceHabitos.insertHabitos(habito);
+                                    App.currenController.changeScene(Scenes.HABITOS, null);
+                                }else {
+                                    AppController.alertDatosIncorretos();
+                                }
+
                             }
-
                         }
+                    }else {
+                        AppController.alertDatosIncorretos();
                     }
+                } else {
+                    AppController.alertDatosIncorretos();
                 }
             } else {
-                System.out.println("Datos invalidos");
+                AppController.selectFech();
+
             }
-        } else {
-            System.out.println("Fecha no seleccionada");
-        }
     }
     @FXML
     private void actualizarHabito() throws Exception {
         String tipo = tipoHabito.getValue();
         ServiceHabitos serviceHabitos = new ServiceHabitos();
+
         if (fecha != null) {
             LocalDate selectedDate = fecha.getValue();
             LocalDate currentDate = LocalDate.now();
@@ -152,12 +158,14 @@ public class ControllerInsertHabitos extends Controller implements Initializable
                             habitoupdate.setId(habitoId);
                             serviceHabitos.updateHabitos(habitoupdate);
                             App.currenController.changeScene(Scenes.HABITOS, null);
+                }else {
+                    AppController.alertDatosIncorretos();
                 }
             } else {
-                System.out.println("Datos invalidos");
+                AppController.alertDatosIncorretos();
             }
         } else {
-            System.out.println("Fecha no seleccionada");
+            AppController.selectFech();
         }
     }
 }

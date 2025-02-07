@@ -111,10 +111,10 @@ public class ControllerInserHuella extends Controller implements Initializable {
                     }
                 }
             } else {
-                System.out.println("Datos invalidos");
+                AppController.alertDatosIncorretos();
             }
         } else {
-            System.out.println("Fecha no seleccionada");
+            AppController.selectFech();
         }
     }
 

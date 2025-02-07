@@ -70,7 +70,7 @@ public class ControllerLogin extends Controller implements Initializable {
                 App.currenController.changeScene(Scenes.MAIN,null);
             }
         }else {
-            System.out.println("Usuario no encontrado");
+            AppController.alertRegistrer();
         }
     }
     @FXML
@@ -83,7 +83,7 @@ public class ControllerLogin extends Controller implements Initializable {
                 UserSesion.getInstancia().logIn(serviceUser.usuarioSesion(usuario.getEmail()));
                 App.currenController.changeScene(Scenes.MAIN,null);
             }else {
-                System.out.println("Usuario no encontrado");
+                AppController.alertDatosIncorretos();
             }
         }
 
