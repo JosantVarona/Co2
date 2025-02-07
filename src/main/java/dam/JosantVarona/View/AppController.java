@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,6 +18,8 @@ import java.util.ResourceBundle;
 public class AppController extends Controller implements Initializable {
     @FXML
     private BorderPane borderPane;
+    @FXML
+    static Alert alert = new Alert(Alert.AlertType.ERROR);
 
     private Controller centerController;
 
@@ -61,5 +64,19 @@ public class AppController extends Controller implements Initializable {
         stage.setScene(_scene);
         view.controller.onOpen(data);
         stage.showAndWait();
+    }
+    public static void alertRegistrer(){
+        alert.setContentText("Se ha producido un error,(cuenta ya registrada o has escrito mal los datos )");
+        alert.setWidth(500);
+        alert.setHeight(500);
+        alert.showAndWait();
+    }
+    public static void alertDatosIncorretos(){
+        alert.setContentText("Datos incorretos");
+        alert.showAndWait();
+    }
+    public static void selectFech(){
+        alert.setContentText("Tiene que seleccionar una fecha");
+        alert.showAndWait();
     }
 }

@@ -118,7 +118,7 @@ public class ControllerIni extends Controller implements Initializable {
         if (mes != null && anio != null) {
             cargarImpactoMensual(anio, mes);
         }else {
-            System.out.println("selecciona los campos");
+            AppController.selectFech();
         }
     }
     @FXML
@@ -130,7 +130,7 @@ public class ControllerIni extends Controller implements Initializable {
             Stage stage = new Stage();
             genereatePDF(stage, anio, mes);
         }else {
-            System.out.println("selecciona los campos");
+            AppController.selectFech();
         }
     }
     private void genereatePDF(Stage stage, Integer anio, Integer mes) {

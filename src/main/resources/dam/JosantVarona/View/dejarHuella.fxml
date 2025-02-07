@@ -28,6 +28,6 @@
       <Label layoutX="549.0" layoutY="117.0" text="Unidad" />
       <Label layoutX="410.0" layoutY="117.0" text="Factor Emisiones" />
       <Label layoutX="38.0" layoutY="248.0" text="Fecha" />
-      <DatePicker fx:id="date" layoutX="38.0" layoutY="280.0" prefHeight="25.0" prefWidth="150.0" />
+      <DatePicker fx:id="date" editable="false" layoutX="38.0" layoutY="280.0" prefHeight="25.0" prefWidth="150.0" />
    </children>
 </Pane>
